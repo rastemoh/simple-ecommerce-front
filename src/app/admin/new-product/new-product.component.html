@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8 my-4">
+      <h1>New Product</h1>
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row">
+          <div class="col">
+            <label for="">Title:</label>
+            <input class="form-control" formControlName="title">
+            <br>
+            <label for="">Description:</label>
+            <textarea name="summary" class="form-control" formControlName="description" rows="3"></textarea>
+            <br>
+            <button class="btn btn-link" type="button" (click)="addVariant()">
+              <i class="fa fa-plus"></i>Add Variant
+            </button>
+            <div formArrayName="variants">
+              <div *ngFor="let variant of variants.controls; let i=index" [formGroupName]="i">
+                <div class="input-group mb-2">
+                  <input type="text" class="form-control" formControlName="color" placeholder="Color">
+                  <input type="text" class="form-control" formControlName="price" placeholder="Price">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" (click)="removeAVariant(i)">Delete</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <br>
+        <button type="submit" [disabled]="productForm.pristine" class="btn btn-success">Submit</button> &nbsp;
+        <button type="button" (click)="location.back()" class="btn btn-default">Back</button>
+      </form>
+    </div>
+  </div>

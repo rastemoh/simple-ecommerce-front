@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.api.allProducts().subscribe((result: any) => {
       this.products = result.products;
-      console.log();
     });
   }
 

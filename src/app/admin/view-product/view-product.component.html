@@ -1,0 +1,34 @@
+<div class="row justify-content-center mt-4">
+  <div class="col-6" *ngIf="product">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{product.title}}</h3>
+        <h6 class="card-subtitle mb-2 text-muted">Available in {{product.variants.length}} variants</h6>
+        <p class="card-text">{{product.description}}</p>
+        <button class="btn btn-danger float-right" (click)="onDelete(product.id)">Delete Product</button>
+      </div>
+      <ul class="list-group list-group-flush" *ngIf="product.variants && product.variants.length">
+        <li class="list-group-item" *ngFor="let variant of product.variants">
+          Color: <strong>{{variant.color}}</strong> - Price: <strong>${{variant.price}}</strong>
+          <button class="btn btn-danger float-right" (click)="onDeleteVariant(variant.id)">Delete Variant</button>
+        </li>
+        <li class="list-group-item">
+          <form [formGroup]="variantForm" (ngSubmit)="onSubmitVariant()" novalidate>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="color" placeholder="Color">
+              <input type="text" class="form-control" formControlName="price" placeholder="Price">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">Submit Variant</button>
+              </span>
+            </div>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center mt-4">
+  <div class="col-6">
+    <a routerLink="/admin" class="btn btn-secondary">Back to Product List</a>
+  </div>
+</div>
