@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-12">
+    <h1>List of Products</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3" *ngFor="let product of products">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Available in {{product.variants.length}} variants</h6>
+        <p class="card-text">{{product.description}}</p>
+        <!-- <a href="#" class="card-link">Card link</a> -->
+      </div>
+      <ul class="list-group list-group-flush" *ngIf="product.variants && product.variants.length">
+          <li class="list-group-item" *ngFor="let variant of product.variants">
+            Color: <strong>{{variant.color}}</strong> - Price: <strong>${{variant.price}}</strong>
+          </li>
+        </ul>
+    </div>
+  </div>
+
+</div>
