@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ApiService {
   constructor(private http: HttpClient) { }
   private token = null;
-  private baseURL = 'http://localhost/dk-commerce/public/index.php/';
+  private baseURL = '/api/';
 
   allProducts() {
     const url = this.baseURL + `products`;
