@@ -11,7 +11,7 @@
         <h5 class="card-title">{{product.title}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Available in {{product.variants.length}} variants</h6>
         <p class="card-text">{{product.description}}</p>
-        <a routerLink="/product/view" class="card-link">Details</a>
+        <a routerLink="/product/view/{{product.id}}" class="card-link">Details</a>
         <button class="btn btn-danger float-right" (click)="onDelete(product.id)">Delete</button>
       </div>
       <ul class="list-group list-group-flush" *ngIf="product.variants && product.variants.length">
